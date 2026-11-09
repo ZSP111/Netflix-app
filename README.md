@@ -45,12 +45,12 @@ The app ships with working demo keys. To use your own, copy `.env.example` to `.
 
 ## Deploying
 
-This is a single-page app. SPA fallback config is included for:
+**GitHub Pages (automatic):** every push to `main` runs `.github/workflows/deploy.yml`. It lints and builds the app and publishes it to the `gh-pages` branch. The site is served at `https://<user>.github.io/<repo>/`.
+If the site doesn't appear after the first run, open **Settings → Pages** and set *Source* to **Deploy from a branch → `gh-pages` / root**.
 
-- **Vercel**: `vercel.json`
-- **Netlify**: `public/_redirects`
+**Vercel / Netlify:** SPA fallback config is included (`vercel.json`, `public/_redirects`). Use build command `npm run build` and output directory `dist`.
 
-For Firebase Auth to work, add your deployed domain under **Firebase console → Authentication → Settings → Authorized domains**.
+To host under a sub-path yourself, build with `VITE_BASE=/your-path/ npm run build`.
 
 ## Project structure
 
