@@ -53,10 +53,11 @@ const Player = () => {
       {!loading && video && (
         <>
           <iframe
-            src={`https://www.youtube.com/embed/${video.key}?autoplay=1&rel=0&modestbranding=1&playsinline=1`}
+            src={`https://www.youtube.com/embed/${video.key}?autoplay=1&rel=0&modestbranding=1&playsinline=1&origin=${encodeURIComponent(window.location.origin)}`}
             title={video.name}
             allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
             allowFullScreen
+            referrerPolicy="strict-origin-when-cross-origin"
           />
           <div className="player-info">
             <strong>{item && titleOf(item)}</strong>
