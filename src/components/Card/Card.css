@@ -1,0 +1,106 @@
+.card {
+  position: relative;
+  flex: 0 0 auto;
+  width: var(--card-w);
+  cursor: pointer;
+  outline: none;
+  transition: transform 0.25s ease, z-index 0s 0.25s;
+  z-index: 1;
+}
+.card:hover,
+.card:focus-visible {
+  transform: scale(1.12);
+  z-index: 5;
+  transition: transform 0.25s ease 0.15s;
+}
+.card-media {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #1f1f1f;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+}
+.card-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.card-fallback {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  padding: 10px;
+  text-align: center;
+  font-weight: 600;
+  background: linear-gradient(135deg, #2b2b2b, #151515);
+}
+.card-title {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 24px 10px 8px;
+  font-size: 13px;
+  font-weight: 600;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: opacity 0.2s;
+}
+.card-hover {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 5px;
+  padding: 8px 10px;
+  background: linear-gradient(transparent 10%, rgba(10, 10, 10, 0.95) 85%);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.card:hover .card-hover,
+.card:focus-visible .card-hover { opacity: 1; transition-delay: 0.15s; }
+.card:hover .card-title,
+.card:focus-visible .card-title { opacity: 0; }
+.card-actions { display: flex; gap: 6px; }
+.card-meta { display: flex; align-items: center; gap: 8px; font-size: 11px; color: #ddd; }
+.card-genres { font-size: 11px; color: #bbb; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.circle-btn {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  background: rgba(30, 30, 30, 0.7);
+  color: #fff;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+.circle-btn:hover { border-color: #fff; background: rgba(60, 60, 60, 0.9); }
+.circle-btn-light { background: #fff; color: #000; border-color: #fff; }
+.circle-btn-light:hover { background: #ddd; }
+.push-right { margin-left: auto; }
+.match { color: var(--success); font-weight: 700; }
+.badge {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 0 5px;
+  border-radius: 3px;
+  font-size: 10px;
+}
+
+/* Top 10 cards: big outlined number + poster */
+.card-ranked { width: calc(var(--card-w) * 1.05); display: flex; align-items: flex-end; }
+.card-ranked .card-media { aspect-ratio: 2 / 3; width: 58%; margin-left: auto; }
+.card-rank {
+  position: absolute;
+  left: 0;
+  bottom: -14px;
+  font-size: calc(var(--card-w) * 0.62);
+  font-weight: 900;
+  line-height: 1;
+  color: #0b0b0b;
+  -webkit-text-stroke: 3px #7a7a7a;
+  letter-spacing: -8px;
+  z-index: 0;
+}
+.card-ranked .card-title { display: none; }
+.card-ranked .card-genres, .card-ranked .card-meta .badge { display: none; }

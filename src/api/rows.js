@@ -1,0 +1,91 @@
+// Row definitions for each browse page. `path`/`params` are TMDB endpoints.
+
+const discover = (type, genre, extra = {}) => ({
+  path: `/discover/${type}`,
+  params: { with_genres: genre, sort_by: 'popularity.desc', ...extra },
+  type,
+})
+
+export const PAGES = {
+  home: {
+    heroPath: '/trending/all/week',
+    rows: [
+      { id: 'continue', title: 'Continue Watching', local: 'history' },
+      { id: 'trending', title: 'Trending Now', path: '/trending/all/week' },
+      { id: 'top10', title: 'Top 10 Movies Today', path: '/trending/movie/day', type: 'movie', top10: true },
+      { id: 'popular', title: 'Popular on Box of Movies', path: '/movie/popular', type: 'movie' },
+      { id: 'mylist', title: 'My List', local: 'list' },
+      { id: 'blockbuster', title: 'Blockbuster Movies', path: '/movie/top_rated', type: 'movie' },
+      { id: 'tvpopular', title: 'Binge-worthy TV Shows', path: '/tv/popular', type: 'tv' },
+      { id: 'action', title: 'Action & Adventure', ...discover('movie', 28) },
+      { id: 'comedy', title: 'Comedies', ...discover('movie', 35) },
+      { id: 'scifi', title: 'Sci-Fi & Fantasy', ...discover('movie', 878) },
+      { id: 'horror', title: 'Horror', ...discover('movie', 27) },
+      { id: 'romance', title: 'Romantic Movies', ...discover('movie', 10749) },
+      { id: 'docs', title: 'Documentaries', ...discover('movie', 99) },
+      { id: 'upcoming', title: 'Coming Soon', path: '/movie/upcoming', type: 'movie' },
+    ],
+  },
+  tv: {
+    heroPath: '/trending/tv/week',
+    heroType: 'tv',
+    rows: [
+      { id: 'trending', title: 'Trending TV Shows', path: '/trending/tv/week', type: 'tv' },
+      { id: 'top10', title: 'Top 10 TV Shows Today', path: '/trending/tv/day', type: 'tv', top10: true },
+      { id: 'popular', title: 'Popular TV Shows', path: '/tv/popular', type: 'tv' },
+      { id: 'toprated', title: 'Critically Acclaimed TV', path: '/tv/top_rated', type: 'tv' },
+      { id: 'onair', title: 'New Episodes', path: '/tv/on_the_air', type: 'tv' },
+      { id: 'action', title: 'Action & Adventure Series', ...discover('tv', 10759) },
+      { id: 'comedy', title: 'TV Comedies', ...discover('tv', 35) },
+      { id: 'drama', title: 'TV Dramas', ...discover('tv', 18) },
+      { id: 'crime', title: 'Crime TV Shows', ...discover('tv', 80) },
+      { id: 'scifi', title: 'Sci-Fi & Fantasy Series', ...discover('tv', 10765) },
+      { id: 'anime', title: 'Animation', ...discover('tv', 16) },
+      { id: 'docs', title: 'Docuseries', ...discover('tv', 99) },
+    ],
+  },
+  movies: {
+    heroPath: '/trending/movie/week',
+    heroType: 'movie',
+    rows: [
+      { id: 'trending', title: 'Trending Movies', path: '/trending/movie/week', type: 'movie' },
+      { id: 'top10', title: 'Top 10 Movies Today', path: '/trending/movie/day', type: 'movie', top10: true },
+      { id: 'nowplaying', title: 'New Releases', path: '/movie/now_playing', type: 'movie' },
+      { id: 'popular', title: 'Popular Movies', path: '/movie/popular', type: 'movie' },
+      { id: 'toprated', title: 'Critically Acclaimed Movies', path: '/movie/top_rated', type: 'movie' },
+      { id: 'action', title: 'Action Movies', ...discover('movie', 28) },
+      { id: 'thriller', title: 'Thrillers', ...discover('movie', 53) },
+      { id: 'comedy', title: 'Comedy Movies', ...discover('movie', 35) },
+      { id: 'drama', title: 'Dramas', ...discover('movie', 18) },
+      { id: 'family', title: 'Family Movies', ...discover('movie', 10751) },
+      { id: 'animation', title: 'Animated Movies', ...discover('movie', 16) },
+      { id: 'horror', title: 'Horror Movies', ...discover('movie', 27) },
+    ],
+  },
+  latest: {
+    heroPath: '/movie/upcoming',
+    heroType: 'movie',
+    rows: [
+      { id: 'newtoday', title: 'New on Box of Movies', path: '/trending/all/day' },
+      { id: 'top10m', title: 'Top 10 Movies Today', path: '/trending/movie/day', type: 'movie', top10: true },
+      { id: 'top10t', title: 'Top 10 TV Shows Today', path: '/trending/tv/day', type: 'tv', top10: true },
+      { id: 'upcoming', title: 'Coming Soon', path: '/movie/upcoming', type: 'movie' },
+      { id: 'nowplaying', title: 'In Theaters Now', path: '/movie/now_playing', type: 'movie' },
+      { id: 'airing', title: 'Airing Today', path: '/tv/airing_today', type: 'tv' },
+      { id: 'onair', title: 'New Episodes This Week', path: '/tv/on_the_air', type: 'tv' },
+    ],
+  },
+  kids: {
+    heroPath: '/discover/movie',
+    heroParams: { with_genres: 16, certification_country: 'US', 'certification.lte': 'G', sort_by: 'popularity.desc' },
+    heroType: 'movie',
+    rows: [
+      { id: 'continue', title: 'Continue Watching', local: 'history' },
+      { id: 'animated', title: 'Animated Adventures', ...discover('movie', 16, { certification_country: 'US', 'certification.lte': 'PG' }) },
+      { id: 'family', title: 'Family Movie Night', ...discover('movie', 10751, { certification_country: 'US', 'certification.lte': 'PG' }) },
+      { id: 'kidstv', title: 'Kids TV', ...discover('tv', 10762) },
+      { id: 'cartoons', title: 'Cartoons', ...discover('tv', 16, { without_genres: '18,80,10768' }) },
+      { id: 'mylist', title: 'My List', local: 'list' },
+    ],
+  },
+}

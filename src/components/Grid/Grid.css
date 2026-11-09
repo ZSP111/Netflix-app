@@ -1,0 +1,7 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(220px, 44vw), 1fr));
+  gap: 34px 10px;
+  padding: 10px 0 30px;
+}
+.grid .card { width: 100%; }

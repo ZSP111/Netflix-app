@@ -1,0 +1,14 @@
+.info-page { max-width: 900px; margin: 0 auto; }
+.info-page section { margin-bottom: 44px; scroll-margin-top: 90px; }
+.info-page h2 { font-size: 22px; margin-bottom: 14px; }
+.info-page p, .info-page ol { color: #ccc; line-height: 1.6; }
+.info-page ol { padding-left: 20px; }
+.info-page ol li { margin-bottom: 6px; }
+.faq { list-style: none; display: grid; gap: 8px; }
+.faq button {
+  width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  padding: 20px 24px; background: #2d2d2d; border: 0; color: #fff; font: inherit; font-size: 18px; text-align: left; cursor: pointer;
+}
+.faq button:hover { background: #414141; }
+.faq button span { font-size: 30px; line-height: 1; }
+.faq p { background: #2d2d2d; margin-top: 1px; padding: 20px 24px; }
