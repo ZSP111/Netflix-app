@@ -1,0 +1,6 @@
+.lang-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 10px; }
+.lang-head .page-title { margin: 0; }
+.lang-controls { display: flex; flex-wrap: wrap; gap: 16px; }
+.lang-controls label { display: flex; align-items: center; gap: 8px; font-size: 14px; color: #ccc; }
+.lang-controls select { background: #000; color: #fff; border: 1px solid #fff; padding: 6px 10px; font: inherit; font-size: 14px; }
+.load-more { display: flex; justify-content: center; padding: 10px 0 30px; }

@@ -1,0 +1,50 @@
+.row { margin-bottom: 18px; position: relative; }
+.row-title {
+  font-size: clamp(16px, 1.6vw, 22px);
+  font-weight: 600;
+  margin: 0 var(--gutter) 2px;
+}
+.row-viewport { position: relative; }
+.row-track {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  padding: 26px var(--gutter);
+  scroll-padding: 0 var(--gutter);
+}
+.row-track::-webkit-scrollbar { display: none; }
+.row-top10 { gap: 2px; }
+.card-skeleton {
+  flex: 0 0 auto;
+  width: var(--card-w);
+  aspect-ratio: 16 / 9;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #1c1c1c 25%, #2a2a2a 50%, #1c1c1c 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+}
+@keyframes shimmer { to { background-position: -200% 0; } }
+.row-arrow {
+  position: absolute;
+  top: 26px;
+  bottom: 26px;
+  width: var(--gutter);
+  min-width: 36px;
+  z-index: 10;
+  border: 0;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.55);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  transition: opacity 0.2s, background 0.2s;
+}
+.row-arrow.left { left: 0; border-radius: 0 6px 6px 0; }
+.row-arrow.right { right: 0; border-radius: 6px 0 0 6px; }
+.row:hover .row-arrow { opacity: 1; }
+.row-arrow:hover { background: rgba(0, 0, 0, 0.8); }
+@media (hover: none) { .row-arrow { display: none; } }

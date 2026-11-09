@@ -1,0 +1,36 @@
+.profiles-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 90px 16px 40px;
+  text-align: center;
+  animation: fadeIn 0.4s ease;
+}
+.profiles-logo { position: fixed; top: 22px; left: var(--gutter); }
+.profiles-page h1 { font-size: clamp(28px, 4vw, 52px); font-weight: 500; margin-bottom: 28px; }
+.profile-list { display: flex; flex-wrap: wrap; justify-content: center; gap: clamp(14px, 2vw, 28px); list-style: none; margin-bottom: 50px; }
+.profile-tile { display: flex; flex-direction: column; align-items: center; gap: 12px; background: none; border: 0; color: #808080; font: inherit; cursor: pointer; }
+.profile-avatar { position: relative; display: block; border-radius: 6px; outline: 3px solid transparent; outline-offset: 0; transition: outline-color 0.2s; }
+.profile-avatar .avatar { width: clamp(84px, 11vw, 140px) !important; height: clamp(84px, 11vw, 140px) !important; }
+.profile-tile:hover .profile-avatar, .profile-tile:focus-visible .profile-avatar { outline-color: #fff; }
+.profile-tile:hover .profile-name, .profile-tile:focus-visible .profile-name { color: #fff; }
+.profile-name { font-size: clamp(14px, 1.3vw, 18px); }
+.profile-add { display: grid; place-items: center; width: clamp(84px, 11vw, 140px); height: clamp(84px, 11vw, 140px); color: #808080; }
+.profile-tile:hover .profile-add { background: #e5e5e5; color: #141414; }
+.profile-edit-overlay { position: absolute; inset: 0; display: grid; place-items: center; background: rgba(0, 0, 0, 0.55); border-radius: 6px; color: #fff; }
+.manage-btn { letter-spacing: 2px; text-transform: uppercase; }
+
+.profile-editor { width: min(640px, 100%); text-align: left; }
+.profile-editor h1 { margin-bottom: 6px; }
+.profile-editor > .muted { padding-bottom: 18px; border-bottom: 1px solid #333; }
+.editor-main { display: flex; gap: 24px; padding: 24px 0; border-bottom: 1px solid #333; flex-wrap: wrap; }
+.editor-fields { flex: 1; min-width: 220px; display: flex; flex-direction: column; gap: 18px; }
+.editor-fields input[type='text'], .editor-fields input:not([type]) { background: #666; border: 0; color: #fff; padding: 10px 12px; font: inherit; font-size: 16px; }
+.color-picker { display: flex; gap: 10px; flex-wrap: wrap; }
+.color-picker button { width: 32px; height: 32px; border-radius: 50%; border: 3px solid transparent; cursor: pointer; }
+.color-picker button.selected { border-color: #fff; }
+.kids-toggle { display: flex; gap: 10px; align-items: center; font-size: 15px; cursor: pointer; }
+.kids-toggle input { width: 20px; height: 20px; accent-color: var(--accent); }
+.editor-actions { display: flex; gap: 14px; padding-top: 24px; flex-wrap: wrap; }

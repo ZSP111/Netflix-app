@@ -1,0 +1,33 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  user-select: none;
+  white-space: nowrap;
+}
+.logo-mark { width: 34px; height: 34px; flex-shrink: 0; }
+.logo-text {
+  font-weight: 800;
+  letter-spacing: 1px;
+  font-size: 22px;
+  background: linear-gradient(90deg, #ffb347, #ff5e2b);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.logo-of {
+  font-size: 0.6em;
+  font-weight: 600;
+  margin: 0 4px;
+  letter-spacing: 0;
+  font-style: italic;
+}
+.logo-lg .logo-mark { width: 48px; height: 48px; }
+.logo-lg .logo-text { font-size: 32px; }
+@media (max-width: 600px) {
+  .logo-md .logo-text { font-size: 17px; }
+  .logo-md .logo-mark { width: 28px; height: 28px; }
+}
+@media (max-width: 480px) {
+  .logo-md .logo-text { display: none; }
+}

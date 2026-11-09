@@ -3,5 +3,17 @@ import react from '@vitejs/plugin-react'
 
 // https://vite.dev/config/
 export default defineConfig({
+  // Set VITE_BASE=/repo-name/ when hosting under a sub-path (e.g. GitHub Pages).
+  base: process.env.VITE_BASE || '/',
   plugins: [react()],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          firebase: ['firebase/app', 'firebase/auth', 'firebase/firestore'],
+          react: ['react', 'react-dom', 'react-router-dom'],
+        },
+      },
+    },
+  },
 })
