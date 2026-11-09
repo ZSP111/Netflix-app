@@ -1,5 +1,9 @@
 name: Deploy to GitHub Pages
 
+# Works with either GitHub Pages setting (Settings -> Pages -> Source):
+#   - "Deploy from a branch" (gh-pages / root)  -> served from the gh-pages branch
+#   - "GitHub Actions"                          -> served by the `pages` job below
+
 on:
   push:
     branches: [main]
@@ -7,13 +11,15 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 concurrency:
   group: pages
   cancel-in-progress: true
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -34,3 +40,20 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+  pages:
+    needs: build
+    runs-on: ubuntu-latest
+    # Only succeeds when Pages Source is "GitHub Actions"; never fails the run.
+    continue-on-error: true
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
